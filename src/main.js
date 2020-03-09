@@ -7,6 +7,22 @@ import 'mint-ui/lib/style.css'
 import router from './router'
 import  './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
+// import moment from 'moment'
+
+//axios
+import vueAxios from 'vue-axios'
+import axios from 'axios'
+import moment from '_moment@2.24.0@moment'
+import { from } from '_array-flatten@2.1.2@array-flatten'
+Vue.use(vueAxios, axios)
+
+//全局时间过滤器
+Vue.filter('dateFormat', function (value,pattern="YYYY-MM-DD HH:mm:ss") {
+  // 返回处理后的值
+  return  moment(value).format(pattern);
+})
+
+  
 
 Vue.config.productionTip = false
 Vue.use(Mint);

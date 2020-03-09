@@ -1,4 +1,4 @@
-##首页设置
+## 首页设置
 
 >1、安装mintui组件
 ```
@@ -33,3 +33,32 @@ import './lib/mui/css/icons-extra.css'
 + 创建导航对应的页面，并将其设置为路由导航，同时将路由显示的坑距离头部要设置padding-top:20px
 
 
+## 改造首页九宫格&&新闻资讯和新闻列表详情
++ 使用mui中的九宫格内容
++ 解决新闻页面中最后一栏显示不全的问题
++ 处理新闻页面中图片大小不一样的问题
++ 新闻页面使用的是mui中的media-list
++ 配置时间格式化的全局配置
+
+```
+cnpm install moment -S //安装时间插件
+import moment from 'moment'  //main.js中导入
+
+//全局时间过滤器
+Vue.filter('dateFormat', function (value,pattern="YYYY-MM-DD HH:mm:ss") {
+  // 返回处理后的值
+  return  moment(value).format(pattern);
+})
+```
+
+
+- 新闻详情页面中图片显示不全的问题，可以将scope去掉同时将img设置为width:100%
+- 新闻页面的整体padding:0 5px
+- 处理一下video基本设置
+```
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 100%;
+}
+```

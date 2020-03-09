@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <!-- 头部导航栏 -->
-    <mt-header fixed title="博超购物商城"></mt-header>
+    <mt-header fixed title="中国新闻网"></mt-header>
+   
 
     <!-- 内容显示区域 -->
     <div class="container">
@@ -31,19 +32,29 @@
         <span class="mui-icon mui-icon-search"></span>
         <span class="mui-tab-label">搜索</span>
       </router-link>
-
     </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  data() {
+    return {
+      disabled: true
+    };
+  },
+  methods: {
+    prev() {
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 
 <style>
-.container{
+.container {
   padding-top: 40px;
+  padding-bottom: 50px;
 }
 </style>

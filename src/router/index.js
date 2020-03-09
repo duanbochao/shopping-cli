@@ -4,6 +4,9 @@ import Home from '@/tabbar/Home'
 import Member from '@/tabbar/Member'
 import Search from '@/tabbar/Search'
 import Shop from '@/tabbar/Shop'
+import NewsList from '@/components/News/NewsList'
+import NewsDetail from '@/components/News/NewsDetail'
+
 
 Vue.use(Router)
 
@@ -32,6 +35,16 @@ export default new Router({
       path:'/shop',
       name: 'shop',
       component: Shop
+    },
+    {
+      path:'/News/newsList',
+      name: 'NewsList',
+      component: NewsList
+    },
+    {
+      path:'/News/newsList/NewsDetail/:id',
+      name: 'NewsDetail',
+      component: NewsDetail
     }
   ],
   linkActiveClass:'mui-active'
