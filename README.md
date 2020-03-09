@@ -121,3 +121,69 @@ i mport comment from '../subcomponents/Comment'
     <!-- 发表评论区域 -->
     <comment></comment>
 ```
+
+## 图片分享
+
+>滑动导航栏中的坑
++ mui中的tab-top-webview-main中找到滑动导航栏
++ 引入mui的js组件
++ 配置webpack的在.babelrc
+详情请参考博客：https://blog.csdn.net/weixin_34025051/article/details/88705417
+
++ 配置好了，底部导航栏又不能使用了，更改样式
+```
+/*  该类名解决tabbar无法切换的问题*/
+  .mui-bar-tab.mui-tab-item-my.mui-active {
+    color: #007aff;
+  }
+  .mui-bar-tab .mui-tab-item-my {
+    display: table-cell;
+    overflow: hidden;
+    width: 1%;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #929292;
+  }
+  .mui-bar-tab .mui-tab-item-my .mui-icon {
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .mui-bar-tab .mui-tab-item-my .mui-icon~.mui-tab-label {
+    font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+```
+>显示区域的坑
++ 引入mint-ui中的图片懒加载方式
++ /坑一:v-lazy="item.img"不能是v-lazy="item.src"或其他
+```
+<ul>
+  <li v-for="item in list">
+    <img v-lazy="item"> 
+  </li>
+</ul>
+
+image[lazy=loading] {  //实际应用因该把image换为img
+  width: 40px;
+  height: 300px;
+  margin: auto;
+}
+```
+
++ li标签中又image图片,当图片不能全部沾满li中的时候可以使用
+ vertical-align: middle;进行全部填充
+
+ + li标签为相对定位,定义图片上的文字为绝对定位
+ + 半透明显示样式设置background-color: rgba(0, 0, 0, 0.4);
+ + 设置边框阴影 box-shadow: 0 0 9px 1px #999;
+ + 为了让图片上的文字显示的更见合适,可以设置一个最大行行高样式max-height: 84px;
+
+

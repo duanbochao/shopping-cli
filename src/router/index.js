@@ -7,7 +7,7 @@ import Shop from '@/tabbar/Shop'
 import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
 import Comment from '@/components/subcomponents/Comment'
-
+import PicticureList from '@/components/SharePic/PicticureList'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +50,11 @@ export default new Router({
       path:'/comment',
       name: 'comment',
       component: Comment
+    },
+    {
+      path:'/picticureList',
+      name: 'picticureList',
+      component: PicticureList
     }
   ],
   linkActiveClass:'mui-active'

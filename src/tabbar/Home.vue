@@ -16,12 +16,12 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/picticureList">
           <span class="mui-icon mui-icon-email">
             <span class="mui-badge">5</span>
           </span>
           <div class="mui-media-body">图片分享</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -75,6 +75,7 @@ export default {
 <style scoped>
 .mint-swipe {
   height: 200px;
+  padding-top: 5px;
 }
 img {
   width: 100%;

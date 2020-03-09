@@ -7,8 +7,9 @@ import 'mint-ui/lib/style.css'
 import router from './router'
 import  './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
-// import moment from 'moment'
 
+
+Vue.use(Mint);
 //axios
 import vueAxios from 'vue-axios'
 import axios from 'axios'
