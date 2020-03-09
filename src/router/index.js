@@ -6,7 +6,7 @@ import Search from '@/tabbar/Search'
 import Shop from '@/tabbar/Shop'
 import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
-
+import Comment from '@/components/subcomponents/Comment'
 
 Vue.use(Router)
 
@@ -45,6 +45,11 @@ export default new Router({
       path:'/News/newsList/NewsDetail/:id',
       name: 'NewsDetail',
       component: NewsDetail
+    },
+    {
+      path:'/comment',
+      name: 'comment',
+      component: Comment
     }
   ],
   linkActiveClass:'mui-active'

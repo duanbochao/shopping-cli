@@ -51,7 +51,6 @@ Vue.filter('dateFormat', function (value,pattern="YYYY-MM-DD HH:mm:ss") {
 })
 ```
 
-
 - 新闻详情页面中图片显示不全的问题，可以将scope去掉同时将img设置为width:100%
 - 新闻页面的整体padding:0 5px
 - 处理一下video基本设置
@@ -61,4 +60,64 @@ audio, canvas, progress, video {
     vertical-align: baseline;
     width: 100%;
 }
+```
+
+## 创建评论组件&&给新闻详情添加该评论组件
+
+>创建评论组件
++ 创建评论组件，在该组件中进行布局调整
++ 发表评论时候获取到文本框中的值要注意不能含有html标签和空格，处理空格使用v-mode.trim="",处理html标签则使用正则的方式，方法如下：
+```
+var commentContent = this.commentContent
+        .replace(/<(style|script|iframe)[^>]*?>[\s\S]+?<\/\1\s*>/gi, "")
+        .replace(/<[^>]+?>/g, "")
+        .replace(/\s+/g, " ")
+        .replace(/ /g, " ")
+        .replace(/>/g, " ");
+
+```
++ 查询评论内容的时候要注意防止返回的结果覆盖问题，如果。可以通过数组追加的方式来避免以后多次查询出现覆盖问题，可以使用concat进行数组追加，如：
+```
+.then(resp => {
+          if (resp && resp.data.state === 1) {
+            _this.commentList = _this.commentList.concat(resp.data.message); //数组追加
+          }
+```
+
++ 发表评论后如果将要发表的评论添加到数据库然后在从新刷新数据库获得自己的发表的评论，这样是比较消耗服务器，我们采用向原有数据的前面添加自己的内容的形式来造作，如：
+```
+ if (resp && resp.data.state === 1) {
+            //创建追加的格式
+            var cmt = {
+              id: 9999,
+              username: "匿名用户",
+              commentContent: this.commentContent,
+              commentDate: new Date()
+            };
+
+            this.commentList.unshift(cmt); //追加到原有的前面
+
+           //省略其他 ...
+ }
+```
+
++ 其他的懒加载、成功后的提示自己看着引入就行
+
+
+>新闻详情添加该评论组件
++ 引入该组件
+```
+i mport comment from '../subcomponents/Comment'
+
+```
++ 注册该组件
+```
+  components:{
+    comment
+  }
+```
++ 使用该组件
+```
+    <!-- 发表评论区域 -->
+    <comment></comment>
 ```

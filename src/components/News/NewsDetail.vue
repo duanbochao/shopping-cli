@@ -12,11 +12,15 @@
     <hr/>
     <!-- 内容显示区域 -->
     <div class="newsDetail_content" v-html="newsInfo.content">
-
     </div>
+
+    <!-- 发表评论区域 -->
+    <comment></comment>
+
   </div>
 </template>
 <script>
+import comment from '../subcomponents/Comment'
 export default {
   data() {
     return {
@@ -26,6 +30,9 @@ export default {
   },
   created() {
     this.getNewsById();
+  },
+  components:{
+    comment
   },
   methods:{
       getNewsById(){
