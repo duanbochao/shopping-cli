@@ -190,3 +190,44 @@ image[lazy=loading] {  //实际应用因该把image换为img
 +  评论区间指定props: ["id"]
 +  子组件引用时候传参 <comment :id=id></comment>
 +  通过flage解决第一次请求时候Toast弹出"已经到底啦"
+
+
+## 滑动导航
+
+> 图片分享中的详情页
++ 官方文档https://github.com/LS1231/vue-preview
+但是官方文档中的图片都是横向的
+
++ 解决办法请参考
+https://www.cnblogs.com/zhinian-/p/11113267.html
+如果按照博客中介绍的全局样式不行的话，还可以设置全局中的样式文件为：
+```
+/*图片预览 缩略图*/
+.preview figure {
+  float: left;
+  width: 30%;
+  /* height:calc(30vw - 0px);  */ //将过多的内容移除
+  margin: 1.5%;
+}
+
+.preview figure img {
+  width: 100%;
+}
+
+.preview{
+     height: calc(47vw - 0px); //设置指定的高度百分比
+    background-color: brown
+}
+
+```
+
++ 循环的图片必须要有宽和高，我们可以在前端手动的添加，
+将返回的数组进行遍历添加，如
+```
+//先将返回的数据进行遍历
+resp.data.message forEach (item = {
+    item.w = 600 ;
+    item.h = 400;
+}) ;
+保存到要遍历的list中
+```

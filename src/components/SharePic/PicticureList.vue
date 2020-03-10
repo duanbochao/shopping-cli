@@ -8,17 +8,17 @@
       >
         <div class="mui-scroll">
           <a
-          @click="getPicByid(0)"
+          @click="getPicByType(0)"
             class="mui-control-item mui-active"
             href="#item1mobile"
             data-wid="tab-top-subpage-1.html"
           >全部</a>
-          <a class="mui-control-item" href="#item2mobile" data-wid="tab-top-subpage-2.html" @click="getPicByid(0)">清纯美女</a>
-          <a class="mui-control-item" href="#item3mobile" data-wid="tab-top-subpage-3.html" @click="getPicByid(1)">极品诱惑</a>
-          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByid(2)">大胸长腿</a>
-          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByid(3)">国产自拍</a>
-          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByid(4)">高清无码</a>
-          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByid(5)">高清有码</a>
+          <a class="mui-control-item" href="#item2mobile" data-wid="tab-top-subpage-2.html" @click="getPicByType(1)">清纯美女</a>
+          <a class="mui-control-item" href="#item3mobile" data-wid="tab-top-subpage-3.html" @click="getPicByType(2)">极品诱惑</a>
+          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByType(3)">大胸长腿</a>
+          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByType(4)">国产自拍</a>
+          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByType(5)">高清无码</a>
+          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByType(6)">高清有码</a>
         </div>
       </div>
     </div>
@@ -26,15 +26,20 @@
     <!-- 图片显示区域 -->
     <div>
       <ul>
-        <li v-for="(item,index) in list" :key="index">
-          <img v-lazy="item.src" />
+        <router-link tag="li" to="/pictureDetail" v-for="(item,index) in Imglist" :key="index">
+          <img v-lazy="item.url" />
           <div class="img_content">
-            <h1 style="color:white;font-size:18px">便踢踢踢踢踢踢</h1>
-            <span style="color:white">neiongggddgngggddgaga哈neionngggddgaga哈neionngggddgaga哈neionaga哈neionggg</span>
+            <h1 style="color:white;font-size:18px">{{item.title}}</h1>
+            <span style="color:white;font-size:14px">{{item.content}}</span>
           </div>
-        </li>
+        </router-link>
       </ul>
     </div>
+
+    <!-- 下拉刷新区域 -->
+ 
+
+
   </div>
 </template>
 <script>
@@ -43,22 +48,8 @@ import mui from "../../lib/mui/js/mui.js"; // 建了lib文件夹，存放mui相�
 export default {
   data() {
     return {
-      list: [
-        {
-          id: 1,
-          src:
-            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3753912988,4185946983&fm=26&gp=0.jpg"
-        },
-        {
-          id: 2,
-          src:
-            " https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=440038702,167770921&fm=26&gp=0.jpg"
-        },
-        {
-          id: 3,
-          src:
-            " https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1713171364,3482066240&fm=26&gp=0.jpg"
-        }
+      index:1,
+      Imglist: [
       ]
     };
   },
@@ -67,12 +58,29 @@ export default {
       deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
     });
   },
-  activated() {},
+  created() {
+    this.getPicByType(0);
+  },
   methods:{
-    getPicByid(id){
-      console.log(id);
-      
-    }
+
+    getPicByType(type){  //获取分类信息
+      var _this=this;
+      this.axios('/share/getSharePagesByType',{
+        params:{
+          page:this.index,
+          type:type
+        }
+      }).then(resp=>{
+        console.log(resp);
+        if (resp && resp.status===200) {
+            _this.Imglist=resp.data;
+        }
+      })
+    },
+
+    // 下拉刷新
+
+    
   }
 };
 </script>
@@ -118,6 +126,8 @@ ul li {
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   max-height: 84px;
+  padding-bottom: 5px;
+  padding-left: 3px;
 }
 
 </style>

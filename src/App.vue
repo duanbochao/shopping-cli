@@ -91,4 +91,21 @@ export default {
 .mui-active{
  color: red;
 }
+
+/*图片预览 缩略图*/
+.preview figure {
+  float: left;
+  width: 30%;
+  /* height:calc(30vw - 0px);  */
+  margin: 1.5%;
+}
+
+.preview figure img {
+  width: 100%;
+}
+
+.preview{
+     height: calc(47vw - 0px);
+    /* background-color: brown */
+}
 </style>

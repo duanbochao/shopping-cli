@@ -8,6 +8,9 @@ import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
 import Comment from '@/components/subcomponents/Comment'
 import PicticureList from '@/components/SharePic/PicticureList'
+import PictureDetail from '@/components/SharePic/PictureDetail'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -55,6 +58,11 @@ export default new Router({
       path:'/picticureList',
       name: 'picticureList',
       component: PicticureList
+    },
+    {
+      path:'/pictureDetail',
+      name: 'pictureDetail',
+      component: PictureDetail
     }
   ],
   linkActiveClass:'mui-active'
