@@ -194,31 +194,71 @@ image[lazy=loading] {  //实际应用因该把image换为img
 
 ## 滑动导航
 
-> 图片分享中的详情页
+> 彻底解决图片分享详情页中的"图片缩略图问题"
 + 官方文档https://github.com/LS1231/vue-preview
 但是官方文档中的图片都是横向的
 
-+ 解决办法请参考
-https://www.cnblogs.com/zhinian-/p/11113267.html
-如果按照博客中介绍的全局样式不行的话，还可以设置全局中的样式文件为：
++ 解决办法，要严格的按照slide1格式来
+
 ```
+<!-- html部分 -->
+      <div>
+        <!--预览-->
+        <vue-preview :slides="slide1" class="preview"></vue-preview>
+      </div>
+
+<!-- js部分 -->
+export default {
+    data () {
+      return {
+        slide1: [
+          {
+            src: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg',
+            msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
+            alt: 'picture1',
+            title: 'Image Caption 1',
+            w: 600,
+            h: 400
+          },
+          {
+            src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg',
+            msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
+            alt: 'picture2',
+            title: 'Image Caption 2',
+            w: 1200,
+            h: 900
+          }
+        ]
+      }
+    }
+
+```
+<!-- 全局css中 -->
 /*图片预览 缩略图*/
+.my-gallery {
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
 .preview figure {
   float: left;
   width: 30%;
-  /* height:calc(30vw - 0px);  */ //将过多的内容移除
+  height:calc(30vw - 0px);  
   margin: 1.5%;
 }
 
+
 .preview figure img {
   width: 100%;
+  height: 100%;
+  box-shadow: 0 0 9px 1px #999;
 }
-
-.preview{
-     height: calc(47vw - 0px); //设置指定的高度百分比
-    background-color: brown
-}
-
 ```
 
 + 循环的图片必须要有宽和高，我们可以在前端手动的添加，
@@ -230,4 +270,27 @@ resp.data.message forEach (item = {
     item.h = 400;
 }) ;
 保存到要遍历的list中
+```
+
+
++ 将收到的数据转换为严格的slide1格式
+```
+
+.then(resp => {
+          <!-- 数组的重新组合 -->
+          var formatData = []; //1、组合后的数组
+          resp.data.forEach(item => {
+            var chgData = {};  //2、数组中的每一项
+            chgData.id = item.id;
+            chgData.src = item.surl;
+            chgData.title = item.title;
+            chgData.content = item.content;
+            chgData.msrc = item.surl;
+            chgData.w = 600;
+            chgData.h = 400;
+            formatData.push(chgData); //3、将对象放入到数组中
+          });
+        this.slide1=formatData;
+        });
+
 ```

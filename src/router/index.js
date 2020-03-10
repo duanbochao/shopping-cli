@@ -60,7 +60,7 @@ export default new Router({
       component: PicticureList
     },
     {
-      path:'/pictureDetail',
+      path:'/pictureDetail/:id',
       name: 'pictureDetail',
       component: PictureDetail
     }

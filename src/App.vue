@@ -2,7 +2,6 @@
   <div id="app">
     <!-- 头部导航栏 -->
     <mt-header fixed title="中国新闻网"></mt-header>
-   
 
     <!-- 内容显示区域 -->
     <div class="container">
@@ -59,53 +58,62 @@ export default {
 }
 
 /*  该类名解决tabbar无法切换的问题*/
-  .mui-bar-tab.mui-tab-item-my.mui-active {
-    color: #007aff;
-  }
-  .mui-bar-tab .mui-tab-item-my {
-    display: table-cell;
-    overflow: hidden;
-    width: 1%;
-    height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #929292;
-  }
-  .mui-bar-tab .mui-tab-item-my .mui-icon {
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .mui-bar-tab .mui-tab-item-my .mui-icon~.mui-tab-label {
-    font-size: 11px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-
-.mui-active{
- color: red;
+.mui-bar-tab.mui-tab-item-my.mui-active {
+  color: #007aff;
+}
+.mui-bar-tab .mui-tab-item-my {
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #929292;
+}
+.mui-bar-tab .mui-tab-item-my .mui-icon {
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.mui-bar-tab .mui-tab-item-my .mui-icon ~ .mui-tab-label {
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/*图片预览 缩略图*/
+.mui-active {
+  color: red;
+}
+
+/**缩略图样式更改 */
+.my-gallery {
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
 .preview figure {
   float: left;
   width: 30%;
-  /* height:calc(30vw - 0px);  */
+  height:calc(30vw - 0px);  
   margin: 1.5%;
 }
 
+
 .preview figure img {
   width: 100%;
+  height: 100%;
+  box-shadow: 0 0 9px 1px #999;
 }
 
-.preview{
-     height: calc(47vw - 0px);
-    /* background-color: brown */
-}
 </style>
