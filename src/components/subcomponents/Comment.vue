@@ -2,6 +2,7 @@
   <div class="comment">
     <h1 style="font-size:24px">发表评论</h1>
     <hr />
+
     <!-- 发表评论区域 -->
     <textarea
       maxlength="120"
@@ -34,14 +35,17 @@ export default {
     return {
       commentContent: "",
       index: 1,
-      commentList: []
+      commentList: [],
+      flag: false
     };
   },
   created() {
+    this.flag = true;
     this.getCommen(1);
   },
   methods: {
     addComment() {
+      var _this=this;
       //添加评论内容
       if (this.commentContent == null || this.commentContent === "") {
         Toast({
@@ -61,7 +65,8 @@ export default {
       this.axios
         .get("/comment/addComment", {
           params: {
-            commentContent: commentContent
+            commentContent: commentContent,
+            nid:_this.id
           }
         })
         .then(resp => {
@@ -85,7 +90,7 @@ export default {
         });
     },
 
-    getCommen(index) {
+    getCommen(index, id) {
       Indicator.open({
         text: "玩命加载中...",
         spinnerType: "fading-circle"
@@ -96,24 +101,30 @@ export default {
       this.axios
         .get("/comment/getCommentByPage", {
           params: {
-            page: index
+            page: index,
+            nid: _this.id
           }
         })
         .then(resp => {
           if (resp && resp.data.state === 1) {
+            this.flag = false;
             Indicator.close();
             _this.commentList = _this.commentList.concat(resp.data.message);
           }
           if (resp && resp.data.state === 0) {
             Indicator.close();
-            Toast({
-              message: resp.data.message,
-              duration: 2000
-            });
+
+            if (!_this.flag) {
+              Toast({
+                message: resp.data.message,
+                duration: 2000
+              });
+            }
           }
         });
     }
-  }
+  },
+  props: ["id"]
 };
 </script>
 <style scoped>

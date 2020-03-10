@@ -186,4 +186,7 @@ image[lazy=loading] {  //实际应用因该把image换为img
  + 设置边框阴影 box-shadow: 0 0 9px 1px #999;
  + 为了让图片上的文字显示的更见合适,可以设置一个最大行行高样式max-height: 84px;
 
-
+## 进一步优化评论内容
++  评论区间指定props: ["id"]
++  子组件引用时候传参 <comment :id=id></comment>
++  通过flage解决第一次请求时候Toast弹出"已经到底啦"

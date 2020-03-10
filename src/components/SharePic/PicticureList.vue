@@ -81,10 +81,11 @@ export default {
   touch-action: pan-y;
 }
 
-ul image[lazy="loading"] {
-  width: 40px;
-  height: 300px;
+ul li img[lazy="loading"] {
+  width: 100%;
+  height: 100;
   margin: auto;
+  background-color: blue;
 }
 
 img {

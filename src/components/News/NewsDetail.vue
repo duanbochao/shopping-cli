@@ -15,7 +15,7 @@
     </div>
 
     <!-- 发表评论区域 -->
-    <comment></comment>
+    <comment :id=id></comment>
 
   </div>
 </template>
