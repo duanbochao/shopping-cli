@@ -233,6 +233,8 @@ export default {
     }
 
 ```
+
+```
 <!-- 全局css中 -->
 /*图片预览 缩略图*/
 .my-gallery {
