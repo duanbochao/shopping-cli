@@ -26,20 +26,17 @@
     <!-- 图片显示区域 -->
     <div>
       <ul>
-        <router-link tag="li" :to="'/pictureDetail/'+item.id" v-for="(item,index) in Imglist" :key="index">
+        <li @click="goPictureDetailPage(item)" v-for="(item,index) in Imglist" :key="index">
           <img v-lazy="item.url" />
           <div class="img_content">
             <h1 style="color:white;font-size:14px">{{item.title}}</h1>
             <span style="color:white;font-size:12px">{{item.content}}</span>
           </div>
-        </router-link>
+        </li>
       </ul>
     </div>
 
     <!-- 下拉刷新区域 -->
- 
-
-
   </div>
 </template>
 <script>
@@ -78,8 +75,10 @@ export default {
       })
     },
 
-    // 下拉刷新
-
+    // 路由传递参数
+      goPictureDetailPage(item){
+        this.$router.push({name:'pictureDetail',params: {item:item}})
+      }
     
   }
 };

@@ -296,3 +296,22 @@ resp.data.message forEach (item = {
         });
 
 ```
+
+## 图片分享界面中的路由改造
+>图片分享页面
++ 将li中的router-link 改造为click="goPictureDetailPage(item)"
++ 将li标签中的tag :to="xxxx"删除
++ 删除router/index.js中的传值方式
++ 在该方法中通过 this.$router.push({name:'pictureDetail',params: {item:item}}) 传递参数
+
+>详情页面中
++ 通过计算属性来获取图片分享页面传递的值
+```
+  computed: {
+    getPicDetailInfo() {
+      return this.$route.params.item;
+    }
+  }
+```
++ 页面中通过{{getPicDetailInfo.属性}}的方式来获取传递过来的值
+
