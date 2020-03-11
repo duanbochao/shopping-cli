@@ -15,7 +15,7 @@
     </div>
 
     <!-- 发表评论区域 -->
-    <comment :id=id></comment>
+    <comment :id=id :commetType='0'></comment>
 
   </div>
 </template>

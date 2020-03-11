@@ -66,7 +66,8 @@ export default {
         .get("/comment/addComment", {
           params: {
             commentContent: commentContent,
-            nid:_this.id
+            nid:_this.id,
+            commetType:_this.commetType
           }
         })
         .then(resp => {
@@ -102,7 +103,8 @@ export default {
         .get("/comment/getCommentByPage", {
           params: {
             page: index,
-            nid: _this.id
+            nid: _this.id,
+            commetType:_this.commetType
           }
         })
         .then(resp => {
@@ -124,7 +126,7 @@ export default {
         });
     }
   },
-  props: ["id"]
+  props: ["id","commetType"]
 };
 </script>
 <style scoped>

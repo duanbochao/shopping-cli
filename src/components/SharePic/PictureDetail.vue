@@ -22,7 +22,7 @@
     </div>
 
     <!-- 评论区域 -->
-    <comment :id="sid"></comment>
+    <comment :id="this.$route.params.item.id" :commetType="1"></comment>
   </div>
 </template>
 <script>
@@ -30,7 +30,6 @@ import comment from "../subcomponents/Comment";
 export default {
   data() {
     return {
-      sid: this.$route.params.id,
       slide1: []
     };
   },
