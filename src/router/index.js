@@ -9,7 +9,8 @@ import NewsDetail from '@/components/News/NewsDetail'
 import Comment from '@/components/subcomponents/Comment'
 import PicticureList from '@/components/SharePic/PicticureList'
 import PictureDetail from '@/components/SharePic/PictureDetail'
-
+import GoodsList from '@/components/GoodsBy/GoodsList'
+import GoodsDetail from '@/components/GoodsBy/GoodsDetail'
 
 Vue.use(Router)
 
@@ -63,7 +64,18 @@ export default new Router({
       path:'/pictureDetail/:id',
       name: 'pictureDetail',
       component: PictureDetail
+    },
+    {
+      path:'/goodsList',
+      name: 'goodsList',
+      component: GoodsList
+    },
+    {
+      path:'/goodsDetail',
+      name: 'goodsDetail',
+      component: GoodsDetail
     }
+    
   ],
   linkActiveClass:'mui-active'
 })

@@ -325,3 +325,70 @@ resp.data.message forEach (item = {
 
 >查询评论内容
 +完善新闻详情和图片分享中的评论功能
+
+
+## 商品购买
+
+>商品购买首页绘制
++ 使用flex布局时候，改变主轴的方向实现上下对齐
+
+> 商品详情页面绘制
++ 在mui中的card.html引入标签
+
+> 抽离路由组件
++ 对路由组件进行抽离
+
+>商品购买详情页面
++ 抽离路由
++ mui中的加减框numbox.html
++ 绘制购物车小球https://cubic-bezier.com/#.13,.87,.57,.78
+
+## 详解加入购物车动画设计过程
++ 绘制一个小球，并设置文为绝对定位方式，通过调节left和top将小球调节到合适的位置
+```
+.ball {
+  width: 17.05px;
+  height: 18px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 100;
+  left:161px;
+  top: 378px;
+  }
+```
++ 通过v-show来控制小球的显示和隐藏
++ 给小球添加动画（将小球标签加入到下面代码中，如）
+
+```
+ <transition v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:after-enter="afterEnter">
+          <div class="ball" v-show="state" ref="ball"></div>
+    </transition>
+
+```
+
++ 这个三个钩子函数中
+```
+    //要特别注意的就是beforeEnter函数中的位置为0，0，就是相对我们之前样式调节的位置
+    beforeEnter(el) {
+      el.style.transform="translate(0px, 0px)"; //放在定位点
+    },
+
+enter(el,done) {
+      //解决适配问题
+      var ballPostion=this.$refs.ball.getBoundingClientRect();//获取小球的位置
+      var shopCarPostion=document.getElementById('shopCar').getBoundingClientRect();
+   
+      var left=shopCarPostion.left-ballPostion.left;
+      var top=shopCarPostion.top-ballPostion.top;
+
+       el.offsetWidth;// 必须加上，不然没有动画
+       el.style.transform=`translate(${left}px,${top}px)`; //终点位置
+       el.style.transition='all .3s cubic-bezier(0.64,-0.33,0.6,1.18)'; //设置动画方式,可以使用cubic-bezier(.04,.64,.67,1.1)替换ease动画效果
+       done(); //此处的done相当于afterEnter的引用
+    },
+
+    afterEnter(el) {
+      this.state=!this.state;
+    }
+```

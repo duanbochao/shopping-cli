@@ -1,11 +1,7 @@
 <template>
   <div class="home">
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="(item,index) in imgList" :key="index">
-        <img :src="item.img" />
-      </mt-swipe-item>
-    </mt-swipe>
+    <Lunbotu :isfull="true" :imgList="imgList"></Lunbotu>
 
     <!-- 中央菜单 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -24,10 +20,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/goodsList">
           <span class="mui-icon mui-icon-chatbubble"></span>
           <div class="mui-media-body">商品购买</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -51,7 +47,9 @@
   </div>
 </template>
 <script>
+  import Lunbotu from '../components/subcomponents/Lunbotu'
 export default {
+
   data() {
     return {
       imgList: []
@@ -59,6 +57,9 @@ export default {
   },
   created() {
     this.getlunbotu();
+  },
+  components:{
+      Lunbotu
   },
   methods: {
     getlunbotu() {
@@ -73,14 +74,6 @@ export default {
 };
 </script>
 <style scoped>
-.mint-swipe {
-  height: 200px;
-  padding-top: 5px;
-}
-img {
-  width: 100%;
-}
-
 .mui-grid-view.mui-grid-9 .mui-media {
   color: #797979;
 }
@@ -92,4 +85,6 @@ img {
 .mui-grid-view.mui-grid-9 {
   background-color: white;
 }
+
+
 </style>
