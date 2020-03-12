@@ -389,6 +389,18 @@ enter(el,done) {
     },
 
     afterEnter(el) {
-      this.state=!this.state;
+      this.state=!this.state;r
     }
 ```
+
+
+## 获取添加框中的内容
++ 给该添加框指定ref="checkBox"
++ 给该添加框添加@change事件
++ 通过this.$ref.checkBox.value 来获取值
+
+
+## 添加vuex状态管理&&完成购物车计算
+
+
+## 完成商品购买页面的数据
