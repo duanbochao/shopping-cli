@@ -47,9 +47,8 @@
   </div>
 </template>
 <script>
-  import Lunbotu from '../components/subcomponents/Lunbotu'
+import Lunbotu from "../components/subcomponents/Lunbotu";
 export default {
-
   data() {
     return {
       imgList: []
@@ -58,8 +57,8 @@ export default {
   created() {
     this.getlunbotu();
   },
-  components:{
-      Lunbotu
+  components: {
+    Lunbotu
   },
   methods: {
     getlunbotu() {
@@ -85,6 +84,4 @@ export default {
 .mui-grid-view.mui-grid-9 {
   background-color: white;
 }
-
-
 </style>

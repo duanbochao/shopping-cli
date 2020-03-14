@@ -7,9 +7,8 @@ import 'mint-ui/lib/style.css'
 import router from './router'
 import  './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
-
 import VuePreview from 'vue-preview'
-
+import store from './utils/store'
 Vue.use(VuePreview, {
   mainClass: 'pswp--minimal--dark',
   barsSize: {top: 0, bottom: 0},
@@ -50,10 +49,12 @@ Vue.filter('filterHtml',{
 Vue.config.productionTip = false
 Vue.use(Mint);
 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

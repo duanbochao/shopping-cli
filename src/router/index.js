@@ -11,6 +11,7 @@ import PicticureList from '@/components/SharePic/PicticureList'
 import PictureDetail from '@/components/SharePic/PictureDetail'
 import GoodsList from '@/components/GoodsBy/GoodsList'
 import GoodsDetail from '@/components/GoodsBy/GoodsDetail'
+import numbox from '@/components/subcomponents/NumBox'
 
 Vue.use(Router)
 

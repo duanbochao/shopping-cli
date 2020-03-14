@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <!-- 头部导航栏 -->
-    <mt-header fixed title="中国新闻网"></mt-header>
+    <mt-header fixed title="中国新闻网">
+      <a slot="left" @click.prevent="back" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </a>
+    </mt-header>
 
     <!-- 内容显示区域 -->
     <div class="container">
@@ -15,16 +19,16 @@
         <span class="mui-tab-label">首页</span>
       </router-link>
 
+      <router-link class="mui-tab-item-my" to="/shop">
+        <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+          <span class="mui-badge" id="shopCar">{{this.$store.getters.getCount}}</span>
+        </span>
+        <span class="mui-tab-label">购物车</span>
+      </router-link>
+
       <router-link class="mui-tab-item-my" to="/member">
         <span class="mui-icon mui-icon-contact"></span>
         <span class="mui-tab-label">会员</span>
-      </router-link>
-
-      <router-link class="mui-tab-item-my" to="/shop">
-        <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge"  id="shopCar">9</span>
-        </span>
-        <span class="mui-tab-label">购物车</span>
       </router-link>
 
       <router-link class="mui-tab-item-my" to="/search">
@@ -40,12 +44,25 @@ export default {
   name: "App",
   data() {
     return {
-      disabled: true
+      disabled: true,
+      flag: true
     };
   },
+  created() {
+    this.flag = this.$route.path === "/home" ? false : true;
+  },
   methods: {
-    prev() {
+    back() {
       this.$router.go(-1);
+    }
+  },
+  watch: {
+    "$route.path": function(newValue) {
+      if (newValue == "/home") {
+        this.flag = false;
+      } else {
+        this.flag = true;
+      }
     }
   }
 };
@@ -105,16 +122,13 @@ export default {
 .preview figure {
   float: left;
   width: 30%;
-  height:calc(30vw - 0px);  
+  height: calc(30vw - 0px);
   margin: 1.5%;
 }
-
 
 .preview figure img {
   width: 100%;
   height: 100%;
   box-shadow: 0 0 9px 1px #999;
 }
-
-
 </style>

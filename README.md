@@ -404,3 +404,62 @@ enter(el,done) {
 
 
 ## 完成商品购买页面的数据
+
+> mui-box初始化
+
+```
+解决：
+初始化数字数字选择框
+导入包：
+
+import mui from “…/…/src/lib/mui/js/mui.min.js”
+
+在挂载dom界面时候初始化数字选择框：
+
+mounted(){
+mui(".mui-numbox").numbox()
+}
+
+```
+
+> 防止刷新时候出现购物车清空
+
+```
+//state中
+  state: {
+    count: 0,
+    car: JSON.parse(window.localStorage.getItem('car') || '[]')
+  },
+//方法中 
+ window.localStorage.setItem('car',JSON.stringify(state.car)) 
+ ```
+
+ + 获取mui-numbox的值是通过
+ ```
+mui(".mui-numbox").numbox().getValue()
+ ```
+
+ ## 完成导航返回按键功能
+
+ ```
+     <!-- 头部导航栏 -->
+    <mt-header fixed title="中国新闻网">
+      <a  slot="left" @click.prevent="back" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </a>
+    </mt-header>
+
+    created(){
+   this.flag=this.$route.path==="/home" ? false : true
+  },
+  watch:{
+    "$route.path":function(newValue) {
+    
+      if (newValue=="/home") {
+        this.flag=false;
+      }else{
+        this.flag=true;
+      }
+    }
+  }
+ ```
