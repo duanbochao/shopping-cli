@@ -34,7 +34,7 @@ export default {
   methods: {
     loadNewsList() {
       var _this = this;
-      this.axios.get("/news/getNewsListById").then(resp => {
+      this.axios.get("/news/web/getNewsListById").then(resp => {
         if (resp && resp.status === 200) {
          _this.newsList=resp.data;
         }

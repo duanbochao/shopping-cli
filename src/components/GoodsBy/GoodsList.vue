@@ -46,7 +46,7 @@ export default {
 
     getGoodsList() {
       this.axios
-        .get("/goods/getGoodsByPage", {
+        .get("/goods/web/getGoodsByPage", {
           params: {
             page: 1
           }

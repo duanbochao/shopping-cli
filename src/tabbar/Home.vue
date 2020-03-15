@@ -63,7 +63,7 @@ export default {
   methods: {
     getlunbotu() {
       var _this = this;
-      this.axios.get("/getlunbo").then(resp => {
+      this.axios.get("/lunbo/web/getlunbo").then(resp => {
         if (resp && resp.status === 200) {
           _this.imgList = resp.data;
         }

@@ -37,7 +37,7 @@ export default {
   methods:{
       getNewsById(){
           var _this=this;
-          this.axios.get('/news/getNewsListById',{params: {
+          this.axios.get('/news/web/getNewsListById',{params: {
               id:_this.id
               }
               }).then(resp=>{
