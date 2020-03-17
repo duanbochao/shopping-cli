@@ -11,7 +11,7 @@
 
     <hr/>
     <!-- 内容显示区域 -->
-    <div class="newsDetail_content" v-html="newsInfo.content">
+    <div class="newsDetail_content" v-html="newsInfo.contentHtml">
     </div>
 
     <!-- 发表评论区域 -->
@@ -42,8 +42,7 @@ export default {
               }
               }).then(resp=>{
               if (resp && resp.status===200) {
-                  console.log(resp.data[0]);
-                  
+                  console.log("====",resp.data[0]);
                   _this.newsInfo=resp.data[0];
               } 
           })
