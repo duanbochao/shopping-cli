@@ -5,8 +5,8 @@
 
     <!-- 发表评论区域 -->
     <textarea
-      maxlength="120"
-      placeholder="请输入你要评论的内容（最多bb120个字）"
+      maxlength="60"
+      placeholder="请输入你要评论的内容（最多bb60个字）"
       style="height:100px;font-size:14px"
       v-model.trim="commentContent"
     ></textarea>
