@@ -70,7 +70,7 @@ export default {
       }).then(resp=>{
         console.log(resp);
         if (resp && resp.status===200) {
-            _this.Imglist=resp.data;
+            _this.Imglist=resp.data.shareList;
         }
       })
     },
