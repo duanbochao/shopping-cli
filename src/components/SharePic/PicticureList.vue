@@ -13,12 +13,12 @@
             href="#item1mobile"
             data-wid="tab-top-subpage-1.html"
           >全部</a>
-          <a class="mui-control-item" href="#item2mobile" data-wid="tab-top-subpage-2.html" @click="getPicByType(1)">清纯美女</a>
-          <a class="mui-control-item" href="#item3mobile" data-wid="tab-top-subpage-3.html" @click="getPicByType(2)">极品诱惑</a>
-          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByType(3)">大胸长腿</a>
-          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByType(4)">国产自拍</a>
-          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByType(5)">高清无码</a>
-          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByType(6)">高清有码</a>
+          <a class="mui-control-item" href="#item2mobile" data-wid="tab-top-subpage-2.html" @click="getPicByType(1)">最新上架</a>
+          <a class="mui-control-item" href="#item3mobile" data-wid="tab-top-subpage-3.html" @click="getPicByType(2)">江南特产</a>
+          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByType(3)">皖北风韵</a>
+          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByType(4)">新疆干货</a>
+          <a class="mui-control-item" href="#item4mobile" data-wid="tab-top-subpage-4.html" @click="getPicByType(5)">砀山酥梨</a>
+          <a class="mui-control-item" href="#item5mobile" data-wid="tab-top-subpage-5.html" @click="getPicByType(6)">进口水果 </a>
         </div>
       </div>
     </div>

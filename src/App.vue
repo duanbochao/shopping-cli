@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 头部导航栏 -->
-    <mt-header fixed title="中国新闻网">
+    <mt-header fixed title="百果园商超便利店">
       <a slot="left" @click.prevent="back" v-show="flag">
         <mt-button icon="back">返回</mt-button>
       </a>

@@ -8,7 +8,7 @@
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/News/newsList/">
           <span class="mui-icon mui-icon-home"></span>
-          <div class="mui-media-body">新闻资讯</div>
+          <div class="mui-media-body">水果资讯</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
