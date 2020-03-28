@@ -62,7 +62,7 @@ export default {
 
     getPicByType(type){  //获取分类信息
       var _this=this;
-      this.axios('/share/web/getSharePagesByType',{
+      this.axios('/home/share/web/getSharePagesByType',{
         params:{
           page:this.index,
           type:type

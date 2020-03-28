@@ -63,7 +63,7 @@ export default {
         .replace(/>/g, " ");
 
       this.axios
-        .get("/comment/web/addComment", {
+        .get("/home/comment/web/addComment", {
           params: {
             commentContent: commentContent,
             nid:_this.id,
@@ -100,7 +100,7 @@ export default {
       //加载评论内容
       var _this = this;
       this.axios
-        .get("/comment/web/getCommentByPage", {
+        .get("/home/comment/web/getCommentByPage", {
           params: {
             page: index,
             nid: _this.id,

@@ -88,7 +88,7 @@ export default {
   
     getGoodsDetailsLunbo(){ //获取轮播图详情信息
       var _this=this;
-      this.axios.get('/goods/web/getGoodsListByGid/'+this.item.id).then(resp=>{
+      this.axios.get('/home/goods/web/getGoodsListByGid/'+this.item.id).then(resp=>{
         if (resp && resp.status===200) {
         resp.data.forEach(item => {
           item.img=item.surl

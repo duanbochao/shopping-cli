@@ -49,7 +49,7 @@ export default {
     },
     getImagesBySid() {
       this.axios
-        .get("/share/web/getImage", {
+        .get("/home/share/web/getImage", {
           params: {
             sid: this.getPicDetailInfo.id
           }

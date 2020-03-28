@@ -26,10 +26,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/leavingMsg">
           <span class="mui-icon mui-icon-location"></span>
           <div class="mui-media-body">留言反馈</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -63,7 +63,7 @@ export default {
   methods: {
     getlunbotu() {
       var _this = this;
-      this.axios.get("/lunbo/web/getlunbo").then(resp => {
+      this.axios.get("/home/lunbo/web/getlunbo").then(resp => {
         if (resp && resp.status === 200) {
           _this.imgList = resp.data;
         }

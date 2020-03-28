@@ -9,8 +9,9 @@ import  './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 import VuePreview from 'vue-preview'
 import store from './utils/store'
+import { postRequest } from '../src/utils/api'
 
-
+Vue.prototype.postRequest = postRequest;
 Vue.use(VuePreview, {
   mainClass: 'pswp--minimal--dark',
   barsSize: {top: 0, bottom: 0},
@@ -21,8 +22,6 @@ Vue.use(VuePreview, {
   tapToClose: true,
   tapToToggleControls: false
 })
-
-
 
 
 Vue.use(Mint);

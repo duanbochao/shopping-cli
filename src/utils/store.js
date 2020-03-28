@@ -1,20 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { stringify } from 'querystring';
 Vue.use(Vuex)
-
 
 
 export default new Vuex.Store({
   state: {
+    stomp: null,
     count: 0,
     car: JSON.parse(window.localStorage.getItem('car') || '[]')
   },
   mutations: {
 
     addGoodsToCar(state, goodsInfo) {
-      console.log("goodsInfo",goodsInfo);
-      
+      console.log("goodsInfo", goodsInfo);
       var flag = false;
       state.car.some(item => {
         if (item.id === goodsInfo.id) {
@@ -41,6 +39,7 @@ export default new Vuex.Store({
       window.localStorage.setItem('car', JSON.stringify(state.car))
     }
 
+
   },
   getters: {
     getCount(state) {
@@ -51,21 +50,34 @@ export default new Vuex.Store({
       });
       return c;
     },
-    getBudegt(state){
+    getBudegt(state) {
 
-      var sum=0;
-      var total=0;
+      var sum = 0;
+      var total = 0;
       state.car.forEach(item => {
-        console.log('item.oldPrice',item);
-        
-        sum+=parseFloat(item.count*item.price);
-        total+=parseInt(item.count)
+        console.log('item.oldPrice', item);
+
+        sum += parseFloat(item.count * item.price);
+        total += parseInt(item.count)
       });
-      var budget={
-        sum:sum,
-        total:total
+      var budget = {
+        sum: sum,
+        total: total
       };
       return budget;
+    }
+  },
+  actions: {
+    connect(context) {
+      context.state.stomp = Stomp.over(new SockJS("/ws/endpointChat"));
+      context.state.stomp.connect({}, function (frame) {
+        context.state.stomp.subscribe("/user/queue/chat", function (response) {
+          console.log("=============",response.body)
+        })
+      }, failedMsg=> {
+        console.log("failedMsg==========")
+      })
+
     }
   }
 })

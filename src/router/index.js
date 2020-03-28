@@ -12,6 +12,7 @@ import PictureDetail from '@/components/SharePic/PictureDetail'
 import GoodsList from '@/components/GoodsBy/GoodsList'
 import GoodsDetail from '@/components/GoodsBy/GoodsDetail'
 import numbox from '@/components/subcomponents/NumBox'
+import LeavingMsg from '@/components/LeavingMsg/LeavingMsg'
 
 Vue.use(Router)
 
@@ -75,7 +76,13 @@ export default new Router({
       path:'/goodsDetail',
       name: 'goodsDetail',
       component: GoodsDetail
+    },
+    {
+      path:'/leavingMsg',
+      name: 'leavingMsg',
+      component: LeavingMsg
     }
+    
     
   ],
   linkActiveClass:'mui-active'
